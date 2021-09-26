@@ -36,18 +36,27 @@ function YoutubeForm() {
         validate: handleValidation
     });
 
-    console.log('Formik Data', formik);
-
     return (
         <div>
             <form onSubmit={formik.handleSubmit} novalidate>
-                <label htmlFor="name">Name</label>
-                <input type="text" id="name" name="name" onChange={formik.handleChange} value={formik.values.name} ></input>
-                <label htmlFor="email">Email</label>
-                <input type="email" id="email" name="email" onChange={formik.handleChange} value={formik.values.email}></input>
-                <label htmlFor="channel">Channel</label>
-                <input type="text" id="channel" name="channel" onChange={formik.handleChange} value={formik.values.channel} ></input>
-                <button >submit</button>
+                <div className="form-control">
+                    <label htmlFor="name">Name</label>
+                    <input type="text" id="name" name="name" onChange={formik.handleChange} value={formik.values.name} ></input>
+                    {formik.errors.name ? <span className="error">{formik.errors.name}</span> : <></>}
+                </div>
+                <div className="form-control">
+                    <label htmlFor="email">Email</label>
+                    <input type="email" formnovalidate  id="email" name="email" onChange={formik.handleChange} value={formik.values.email}></input>
+                    {formik.errors.email ? <span className="error">{formik.errors.email}</span> : <></>}
+                </div>
+                <div className="form-control">
+                    <label htmlFor="channel">Channel</label>
+                    <input type="text" id="channel" name="channel" onChange={formik.handleChange} value={formik.values.channel} ></input>
+                    {formik.errors.channel ? <span className="error">{formik.errors.channel}</span> : <></>}
+                </div>
+                <div className="form-control">
+                    <input type="submit" value="submit"></input>
+                </div>
             </form>
         </div>
     )

@@ -14,9 +14,9 @@ input[type='email'],
 textarea {
   display: block;
   width: 400px;
-  padding: 6px, 12px;
+  padding: 10px, 12px;
   font-size: 14px;
-  line-height: 1.4;
+  line-height: 1.4232323;
   color: #555;
   background-color: #fff;
   background-image: none;
