@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Form, Field, ErrorMessage } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
 import * as Yup from 'yup';
 
 import TextError from './TextError';
@@ -17,8 +17,8 @@ function YoutubeForm() {
             twitter: '',
             linkedin: ''
         },
-        phoneNumbers: ['', '']
-        
+        phoneNumbers: ['', ''],
+        favourites: ['']
     }
 
     const handleSubmit = (formData) => {
@@ -105,6 +105,35 @@ function YoutubeForm() {
                     <label htmlFor='secondaryPhoneNumber'>Secondary Phone Number</label>
                     <Field type='text' id='secondaryPhoneNumber' name='phoneNumbers[1]'></Field>
                 </div>      
+                <div className='form-control'>
+                    <label htmlFor='favourites'>Favorites</label>
+                    <FieldArray name='favourites'>
+                        {
+                            (fieldArrayProps) => {
+                                console.log('FieldArray Props', fieldArrayProps);
+                                const {push, remove, form} = fieldArrayProps;
+                                const { values } = form;
+                                const { favourites } = values;
+                                console.log('favourites', favourites);
+                                return (<div>
+                                    {
+                                        favourites.map((f, index) => {
+                                             return (<div key={index}>
+                                                 <Field name={`favourites[${index}]`}></Field>
+                                                 {
+                                                     index > 0 && <button type='button' onClick={() => remove(index)}> - </button>
+                                                 }
+                                                 
+                                                 <button type='button' onClick={() => push('')}> + </button>
+                                             </div>);   
+                                        })
+                                    }
+                                </div>);    
+                            }
+                        }    
+                    </FieldArray>
+                </div>      
+
                 <div className="form-control">
                     <Field type="submit" value="submit" ></Field>
                 </div>
