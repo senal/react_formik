@@ -16,7 +16,9 @@ function YoutubeForm() {
             facebook: '',
             twitter: '',
             linkedin: ''
-        }
+        },
+        phoneNumbers: ['', '']
+        
     }
 
     const handleSubmit = (formData) => {
@@ -95,7 +97,14 @@ function YoutubeForm() {
                     <label htmlFor='linkedin'>LinkedIn profile</label>
                     <Field type='text' id='linkedin' name='social.linkedin'></Field>
                 </div>            
-
+                <div className='form-control'>
+                    <label htmlFor='primaryPhoneNumber'>Primary Phone Number</label>
+                    <Field type='text' id='primaryPhoneNumber' name='phoneNumbers[0]'></Field>
+                </div> 
+                <div className='form-control'>
+                    <label htmlFor='secondaryPhoneNumber'>Secondary Phone Number</label>
+                    <Field type='text' id='secondaryPhoneNumber' name='phoneNumbers[1]'></Field>
+                </div>      
                 <div className="form-control">
                     <Field type="submit" value="submit" ></Field>
                 </div>
