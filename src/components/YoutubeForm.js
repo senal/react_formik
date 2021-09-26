@@ -11,7 +11,12 @@ function YoutubeForm() {
         email: '',
         channel: '',
         comments: '',
-        address: ''
+        address: '',
+        social: {
+            facebook: '',
+            twitter: '',
+            linkedin: ''
+        }
     }
 
     const handleSubmit = (formData) => {
@@ -78,6 +83,18 @@ function YoutubeForm() {
                     </Field>
                     <ErrorMessage name='channel'></ErrorMessage>
                 </div>
+                <div className='form-control'>
+                    <label htmlFor='facebook'>Facebook profile</label>
+                    <Field type='text' id='facebook' name='social.facebook'></Field>
+                </div>
+                <div className='form-control'>
+                    <label htmlFor='twitter'>Twitter profile</label>
+                    <Field type='text' id='twitter' name='social.twitter'></Field>
+                </div>            
+                <div className='form-control'>
+                    <label htmlFor='linkedin'>LinkedIn profile</label>
+                    <Field type='text' id='linkedin' name='social.linkedin'></Field>
+                </div>            
 
                 <div className="form-control">
                     <Field type="submit" value="submit" ></Field>
