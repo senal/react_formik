@@ -1,5 +1,5 @@
 import React from 'react'
-import { Formik, Form, Field, ErrorMessage, FieldArray } from 'formik';
+import { Formik, Form, Field, ErrorMessage, FieldArray, FastField } from 'formik';
 import * as Yup from 'yup';
 
 import TextError from './TextError';
@@ -69,11 +69,11 @@ function YoutubeForm() {
                 </div>
                 <div className="form-control">
                     <label htmlFor="address">Address</label>
-                    <Field name="address">
+                    <FastField name="address">
                         {
                          props => {
+                            console.log('Field render')
                             const {form, field, meta} = props;
-
                                 return (
                                     <div>
                                         <input type='text' {...field} id="address" />
@@ -82,7 +82,7 @@ function YoutubeForm() {
                                 )
                             }
                         }
-                    </Field>
+                    </FastField>
                     <ErrorMessage name='channel'></ErrorMessage>
                 </div>
                 <div className='form-control'>
@@ -110,11 +110,9 @@ function YoutubeForm() {
                     <FieldArray name='favourites'>
                         {
                             (fieldArrayProps) => {
-                                console.log('FieldArray Props', fieldArrayProps);
                                 const {push, remove, form} = fieldArrayProps;
                                 const { values } = form;
                                 const { favourites } = values;
-                                console.log('favourites', favourites);
                                 return (<div>
                                     {
                                         favourites.map((f, index) => {
@@ -133,7 +131,6 @@ function YoutubeForm() {
                         }    
                     </FieldArray>
                 </div>      
-
                 <div className="form-control">
                     <Field type="submit" value="submit" ></Field>
                 </div>
